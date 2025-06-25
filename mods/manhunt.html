@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Mario Mod</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .fade-container {
+            position: relative;
+            height: 500px;
+            border-radius: 12px;
+            border: 3px solid var(--blue-highlight);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .fade-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            border-radius: 12px;
+        }
+
+        .fade-image.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .mod-video {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            padding-top: 25px;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 3px solid var(--blue-highlight);
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .mod-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .modal-buttons button {
+            margin: 0.5rem 0;
+            width: 200px;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .modal-buttons button:hover {
+            background: var(--blue-highlight);
+        }
+
+        .modal-buttons button.cancel-btn {
+            background: #ff4d4d;
+            color: white;
+        }
+
+        .modal-buttons button.cancel-btn:hover {
+            background: #e60000;
+        }
+
+        .play-video-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .play-video-btn:hover {
+            background: var(--blue-highlight);
+        }
+
+
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>ManHunt Mod</h1>
+            <p>ManHunt in Mario Odyssey Multiplayer</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="../index.html" class="back-button">← Back to Mods</a>
+
+        <!-- Fade image container -->
+        <div class="mod-showcase fade-container">
+            <img src="../img/ManHunt.png" alt="ManHunt Showcase" class="mod-showcase-image fade-image active">
+            <img src="../img/ManHunt.png" alt="ManHunt Extra View" class="mod-showcase-image fade-image">
+        </div>
+
+        <!-- Play Showcase Video Button -->
+        <button class="play-video-btn" onclick="openVideo()">Play Showcase Video</button>
+
+        <!-- Mod info -->
+        <div class="mod-info">
+            <h2 class="mod-detail-title">ManHunt Mod</h2>
+            <div class="mod-meta-info">
+                <span>Version: 1.0</span>
+                <span>Creator: Secret Dev</span>
+                <span>Last Updated: Never</span>
+            </div>
+            <div class="mod-long-description">
+                <p>Using Super Mario Odyssey Online Multiplayer, I have created the ManHunt Gamemode, 1 Runner(s) and 1 Hunter(s), the Runner has to beat the game without dying, if he dies the Hunter wins. </p>
+            </div>
+            <button class="download-button" onclick="showDownloadModal()">Download Mod</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Secret Dev's Mod Library</p>
+    </footer>
+
+    <!-- Download Bar -->
+    <div id="download-bar"></div>
+
+    <!-- Download Modal -->
+    <div id="download-modal">
+        <div class="modal-content">
+            <h3>Download for:</h3>
+            <div class="modal-buttons">
+                <button onclick="startDownload('Emulator')">Emulator</button>
+                <button onclick="startDownload('Switch')">Switch</button>
+                <button class="cancel-btn" onclick="cancelDownload()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.fade-image');
+        
+        function nextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        function showDownloadModal() {
+            document.getElementById('download-modal').classList.add('active');
+        }
+
+        function startDownload(platform) {
+            // Add your download links here
+            const downloadLinks = {
+                'Emulator': 'https://github.com/DaDev123/SMO-Manhunt/releases/download/1.0.0/SMOManHunt-Emulator.zip',
+                'Switch': 'https://github.com/DaDev123/SMO-Manhunt/releases/download/1.0.0/atmosphere.zip'
+            };
+            
+            document.getElementById('download-modal').classList.remove('active');
+            showDownloadBar(`Download Starting for ${platform}...`, 'success');
+            
+            // Start the download
+            const link = document.createElement('a');
+            link.href = downloadLinks[platform];
+            link.download = `ManHunt-Mod-${platform}.zip`; // This sets the filename
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function cancelDownload() {
+            document.getElementById('download-modal').classList.remove('active');
+            showDownloadBar('Download Canceled', 'error');
+        }
+
+        function showDownloadBar(message, type) {
+            const bar = document.getElementById('download-bar');
+            bar.textContent = message;
+            if (type === 'error') {
+                bar.style.backgroundColor = '#ff4d4d';
+                bar.style.color = 'white';
+            } else {
+                bar.style.backgroundColor = 'var(--accent)';
+                bar.style.color = 'var(--primary)';
+            }
+            bar.classList.add('show');
+            setTimeout(() => {
+                bar.classList.remove('show');
+            }, 3000);
+        }
+
+        // Open YouTube video in a new tab
+        function openVideo() {
+            const videoUrl = "https://youtu.be/SQvJ9PsegHE";  // Replace with the actual video ID
+            window.open(videoUrl, "_blank");
+        }
+
+        // Start image rotation
+        setInterval(nextImage, 5000);
+    </script>
+</body>
+</html>

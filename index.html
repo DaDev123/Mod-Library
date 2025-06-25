@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SrDev's Mods</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .mod-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .mod-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #ff4757;
+      color: white;
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .mod-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .card-logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 69px; /* 50% larger than 36px */
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+    .coming-soon .mod-title,
+    .coming-soon .mod-description {
+      color: #888;
+      font-style: italic;
+    }
+
+    .section-header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-logo {
+      width: 48px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <h1>Secret Dev's Mods Library</h1>
+      <p>Every (Good) Mod I've made for Super Mario Odyssey</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="main-banner">
+      <img src="img/banner.png" alt="Racing Mods Banner" class="main-image" />
+    </div>
+
+    <h2 class="section-title">Featured Mods</h2>
+    <div class="mods-grid">
+      <a href="mods/small-mario.html" class="mod-card">
+        <img src="img/SmallMario.png" alt="Mini Mario" class="mod-image" />
+        <div class="mod-content">
+          <h3 class="mod-title">Small Mario Mod</h3>
+          <p class="mod-description">Mario has now become 30% of his original size</p>
+        </div>
+      </a>
+
+      <!-- Coming Soon Cards -->
+      <a href="mods/manhunt.html" class="mod-card">
+        <img src="img/ManHunt.png" alt="ManHunt" class="mod-image" />
+<img src="img/SMOO.png" alt="SMOO Logo" class="card-logo" />
+        <div class="mod-content">
+          <h3 class="mod-title">ManHunt</h3>
+          <p class="mod-description">Super Mario Odyssey Online, ManHunt Gamemode</p>
+        </div>
+      </a>
+      <a href="#" class="mod-card coming-soon">
+        <span class="badge">WIP</span>
+        <img src="img/soon.png" alt="Coming Soon" class="mod-image" />
+        <div class="mod-content">
+          <h3 class="mod-title">Shine Thief</h3>
+          <p class="mod-description">Coming Soon</p>
+        </div>
+      </a>
+      <a href="#" class="mod-card coming-soon">
+        <span class="badge">WIP</span>
+        <img src="img/soon.png" alt="Coming Soon" class="mod-image" />
+        <div class="mod-content">
+          <h3 class="mod-title">Mario VS Luigi</h3>
+          <p class="mod-description">Coming Soon</p>
+        </div>
+      </a>
+      <a href="#" class="mod-card coming-soon">
+        <span class="badge">WIP</span>
+        <img src="img/soon.png" alt="Coming Soon" class="mod-image" />
+        <div class="mod-content">
+          <h3 class="mod-title">???</h3>
+          <p class="mod-description">Coming Soon</p>
+        </div>
+      </a>
+      <a href="#" class="mod-card coming-soon">
+        <span class="badge">WIP</span>
+        <img src="img/soon.png" alt="Coming Soon" class="mod-image" />
+        <div class="mod-content">
+          <h3 class="mod-title">???</h3>
+          <p class="mod-description">Coming Soon</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- Mario Odyssey Online Twists -->
+    <div class="section-header">
+      <h2 class="section-title">Mario Odyssey Online Twists</h2>
+      <img src="img/SMOO.png" alt="SMOO Logo" class="section-logo">
+    </div>
+
+    <div class="mods-grid">
+      <a href="#" class="mod-card coming-soon">
+<span class="badge">Coming Soon</span>
+        <img src="img/SmallMario.png" alt="SMOO-Small-Mario" class="mod-image" />
+        <img src="img/SMOO.png" alt="SMOO Logo" class="card-logo" />
+        <div class="mod-content">
+          <h3 class="mod-title">Small Mario Online</h3>
+          <p class="mod-description">Small Mario Mod except it's multiplayer and you are very strong</p>
+        </div>
+      </a>
+
+      <!-- Coming Soon SMO Online Cards -->
+      <a href="#" class="mod-card coming-soon">
+        <span class="badge">Coming Soon</span>
+        <img src="img/Cappyless.jpg" alt="Cappyless Online" class="mod-image" />
+        <img src="img/smoo.png" alt="SMOO Logo" class="card-logo" />
+        <div class="mod-content">
+          <h3 class="mod-title">Cappyless Online</h3>
+          <p class="mod-description"> Multiplayer but Cappy has been entirely deleted</p>
+        </div>
+      </a>
+      <a href="#" class="mod-card coming-soon">
+        <span class="badge">Coming Soon</span>
+        <img src="img/soon.png" alt="Coming Soon Online" class="mod-image" />
+        <img src="img/smoo.png" alt="SMOO Logo" class="card-logo" />
+        <div class="mod-content">
+          <h3 class="mod-title">???</h3>
+          <p class="mod-description">Coming Soon</p>
+        </div>
+      </a>
+      <a href="#" class="mod-card coming-soon">
+        <span class="badge">Coming Soon</span>
+        <img src="img/soon.png" alt="Coming Soon Online" class="mod-image" />
+        <img src="img/smoo.png" alt="SMOO Logo" class="card-logo" />
+        <div class="mod-content">
+          <h3 class="mod-title">???</h3>
+          <p class="mod-description">Coming Soon</p>
+        </div>
+      </a>
+      <a href="#" class="mod-card coming-soon">
+        <span class="badge">Coming Soon</span>
+        <img src="img/soon.png" alt="Coming Soon Online" class="mod-image" />
+        <img src="img/smoo.png" alt="SMOO Logo" class="card-logo" />
+        <div class="mod-content">
+          <h3 class="mod-title">???</h3>
+          <p class="mod-description">Coming Soon</p>
+        </div>
+      </a>
+      <a href="#" class="mod-card coming-soon">
+        <span class="badge">Coming Soon</span>
+        <img src="img/soon.png" alt="Coming Soon Online" class="mod-image" />
+        <img src="img/smoo.png" alt="SMOO Logo" class="card-logo" />
+        <div class="mod-content">
+          <h3 class="mod-title">???</h3>
+          <p class="mod-description">Coming Soon</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 Secret Dev's Mods Library</p>
+  </footer>
+</body>
+</html>
+
